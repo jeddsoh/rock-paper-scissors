@@ -1,12 +1,3 @@
-// USER CLICKS BTN
-// • Register their selection
-// • Generator random computer selection
-// • Identify winner
-// • Update score
-// • Update alert
-// • Add point towards 3/5 games
-// • Check for game over (If anyone has won 3 games)
-
 let userScore = 0;
 let computerScore = 0;
 let winner = "";
