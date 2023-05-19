@@ -1,76 +1,112 @@
-let computerScore = 0;
+// USER CLICKS BTN
+// • Register their selection
+// • Generator random computer selection
+// • Identify winner
+// • Update score
+// • Update alert
+// • Add point towards 3/5 games
+// • Check for game over (If anyone has won 3 games)
+
 let userScore = 0;
-let roundNum = 0;
+let computerScore = 0;
+let winner = "";
 
-function getPlayerSelection() {
-    let input = prompt("Rock, paper, or scissors?");
+const alertWrapper = document.querySelector(".alertWrapper");
+const alertText = document.querySelector("#alertText");
 
-    while ((input.toLowerCase() !== "rock") && (input.toLowerCase() !== "paper") && (input.toLowerCase() !== "scissors")) {
-        alert("Must choose one of the options.");
-        input = prompt("Rock, paper, or scissors?");
-    }
-    return input.toLowerCase();
-  }
+
+const rock = document.querySelector("#rock");
+rock.addEventListener('click', () => {
+    playRound("rock", getComputerChoice());
+});
+
+const paper = document.querySelector("#paper");
+paper.addEventListener('click', () => {
+    playRound("paper", getComputerChoice());
+});
+
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener('click', () => {
+    playRound("scissors", getComputerChoice());
+});
 
 function getComputerChoice() {
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-      }
+    let num = Math.floor(Math.random() * 3);
 
-    let num = getRandomInt(1, 4);
+    if (num == 0) {
+        num = "rock";
+    } else if (num == 1) {
+        num = "paper";
+    } else if (num == 2) {
+        num = "scissors";
+    }
 
-    if (num === 1) {
-        return "rock";
-    } else if (num === 2) {
-        return "paper";
-    } else {
-        return "scissors";
+    return num;
+}
+
+function updateScore() {
+    const userCount = document.querySelector("#userCount");
+    const computerCount = document.querySelector("#computerCount");
+
+    userCount.textContent = `${userScore}`;
+    computerCount.textContent = `${computerScore}`;
+}
+
+function checkGameEnd() {
+    if (userScore == 3) {
+        winner = "You";
+    } else if (computerScore == 3) {
+        winner = "The computer";
+    }
+
+    if ((userScore == 3) || (computerScore == 3)) {
+        const buttons = document.querySelector(".buttons");
+        const instructions = document.querySelector(".instructions")
+        buttons.style.display = "none";
+        alertWrapper.style.display = "none";
+
+        if (winner == "You") {
+            instructions.style.fontWeight = "bold";
+            instructions.style.color = "#22c55e";
+            instructions.style.fontSize = "2rem"
+            instructions.textContent = `${winner} won the game!`;
+        } else if (winner == "The computer") {
+            instructions.style.fontWeight = "bold";
+            instructions.style.color = "#ef4444";
+            instructions.style.fontSize = "2rem"
+            instructions.textContent = `${winner} won the game...`;
+        }
     }
 }
 
-function playRound(playerSelection, computerChoice) {
-    let winner = "";
-
-    if ((playerSelection === "rock" && computerChoice === "scissors") || (playerSelection === "scissors" && computerChoice === "paper") || (playerSelection === "paper" && computerChoice === "rock")) {
-        winner = "You won!";
+function playRound(userChoice, computerChoice) {
+    if (((userChoice == "rock") && (computerChoice == "scissors")) || ((userChoice == "scissors") && (computerChoice == "paper")) || ((userChoice == "paper") && (computerChoice == "rock"))) {
+        alertWrapper.style.display = "flex";
+        alertWrapper.style.border = "solid 2px #22c55e";
+        alertText.style.color = "#22c55e";
+        alertText.textContent = "You won this round!"
         userScore++;
-        roundNum++;
-    } else if ((playerSelection === "rock" && computerChoice === "paper") || (playerSelection === "scissors" && computerChoice === "rock") || (playerSelection === "paper" && computerChoice === "scissors")) {
-        winner = "The computer won."
+    } else if (((userChoice == "rock") && (computerChoice == "paper")) || ((userChoice == "scissors") && (computerChoice == "rock")) || ((userChoice == "paper") && (computerChoice == "scissors"))) {
+        alertWrapper.style.display = "flex";
+        alertWrapper.style.border = "solid 2px #ef4444";
+        alertText.style.color = "#ef4444";
+        alertText.textContent = "The computer won this round!"
         computerScore++;
-        roundNum++;
-    } else if (playerSelection == computerChoice) {
-        winner = "This round was a draw.";
+    } else {
+        alertWrapper.style.display = "flex";
+        alertWrapper.style.border = "solid 2px #f59e0b"
+        alertText.style.color = "#f59e0b"
+        alertText.textContent = "Draw! Nobody gained a point."
     }
 
-    console.log("Round #" + roundNum);
-    console.log(`You chose ${playerSelection}, the computer chose ${computerChoice}. ${winner}`);
-    console.log("Your score: " + userScore);
-    console.log("Computer score: " + computerScore);
+    updateScore();
+    checkGameEnd();
+
+    console.log(`userChoice = ${userChoice}. computerChoice = ${computerChoice}.`);
+
+    console.log(`userScore: ${userScore}. computerScore: ${computerScore}`);
+    
+    if (winner != "") {
+       console.log(`${winner} won the game!`);
+    }
 }
-
-function nameWinner() {
-    if (userScore >= 3) {
-        console.log("You won the game!");
-       } else if (computerScore > 3) {
-        console.log("Computer won the game");
-       } else {
-        console.log("Game was a draw!")
-       }
-}
-
-function playGame() {
-
-    playRound(getPlayerSelection(), getComputerChoice());
-    playRound(getPlayerSelection(), getComputerChoice());
-    playRound(getPlayerSelection(), getComputerChoice());
-    nameWinner();
-    playRound(getPlayerSelection(), getComputerChoice());
-    nameWinner();
-    playRound(getPlayerSelection(), getComputerChoice());
-    nameWinner();
-} 
-
-console.log(playGame());

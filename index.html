@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./main.js" defer></script>
-    <link rel="stylesheet" href="./main.css">
-    <title>rock paper scissors</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="./main.css" />
+    <title>✊✋✌️</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Rock Paper Scissors</h1>
+        <p class="text-lg">3 out of 5 wins.</p>
+      </div>
+      <div class="content">
+        <p class="instructions">Choose your weapon:</p>
+        <div class="buttons">
+        <button id="rock">
+            <p>✊</p>
+            <label>Rock</label>
+        </button>
+        <button id="paper">
+            <p>✋</p>
+            <label>Paper</label>
+        </button>
+        <button id="scissors">
+            <p>✌️</p>
+            <label>Scissors</label>
+        </button>
+        </div>
+      </div>
+      <div class="scoreboard">
+        <div class="scores">
+            <div class="count">
+                <p class="number" id="userCount">0</p>
+                <p>Your Score</p>
+             </div>
+             <div class="count">
+                <p class="number" id="computerCount">0</p>
+                 <p>Computer Score</p>
+             </div>
+        </div>
+        <div class="alertWrapper">
+            <p id="alertText">You won this round!</p>
+        </div>
+        <div class="reset">
+            <a href="">Start over</a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Set default styles */
+body {
+    margin: 0;
+    background-color: #0c0a09;
+    color: #fafaf9;
+    font-size: 1.25rem;
+    font-family: 'Space Mono';
+    text-align: center;
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
+}
+
+/* Rest of CSS */
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    align-items: center;
+    justify-content: start;
+    padding-top: 10rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header p {
+    margin-top: .5rem;
+}
+
+.alertWrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    background-color: ;
+    border: ;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+button {
+    background-color: #292524;
+    color: #fafaf9;
+    font-size: 1.5rem;
+    font-family: inherit;
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 8rem;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+button:hover {
+    background-color: #78716c;
+}
+
+button label {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 10rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border: solid 1px #fafaf9;
+    padding: 1rem 1rem;
+    border-radius: .5rem;
+}
+
+.number {
+    font-size: 2rem;
+}
+
+.instructions {
+    margin-bottom: 1rem;
+    font-weight: ;
+    color: ;
+    font-size: ;
+    border: ;
+}
+
+a {
+    color: #fafaf9;
+    font-size: .875rem;
+    text-decoration: none;
+}
